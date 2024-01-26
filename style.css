@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .jumbotron {
   padding-top: 5rem;
   background-color: #e2edff;
@@ -49,6 +54,18 @@ section {
   }
 
   .display-6 {
-    font-size: 2.5rem !important;
+    font-size: 3.5rem !important;
+  }
+
+  .text-about {
+    font-size: 1.5rem;
+  }
+
+  .card-text {
+    font-size: 1.5rem;
+  }
+
+  .text-contact {
+    font-size: 1.5rem;
   }
 }
