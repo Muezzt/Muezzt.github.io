@@ -141,21 +141,29 @@
           </div>
         </div>
         <div class="text-contact row justify-content-center">
-          <div class="col-md-6 col-8">
-            <form>
+          <div class="col-md-8 col-6">
+            <div class="alert alert-success alert-dismissible fade show d-none" role="alert">
+              <strong>Terimakasih!</strong> Pesan anda sudah kami terima.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <form name="My-Contact-Form">
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" />
+                <input name="nama" type="text" class="form-control" id="name" aria-describedby="name" />
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" aria-describedby="email" />
+                <input name="email" type="email" class="form-control" id="email" aria-describedby="email" />
               </div>
               <div class="mb-3">
                 <label for="pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="pesan" rows="3"></textarea>
+                <textarea name="pesan" class="form-control" id="pesan" rows="3"></textarea>
               </div>
-              <button type="submit" class="klik btn btn-danger">Kirim</button>
+              <button type="submit" class="klik btn btn-primary btn-kirim">Kirim</button>
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                <span role="status">Loading...</span>
+              </button>
             </form>
           </div>
         </div>
@@ -177,5 +185,33 @@
     <!-- Akhir footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyqXZuEi87rIj631TIyFv6CFRFKBsV7ByRvYp1W7fpgV0XLpG4lrG7R71Ep4Jz4OhfqTw/exec";
+      const form = document.forms["My-Contact-Form"];
+      const btnKirim = document.querySelector(".btn-kirim");
+      const btnLoading = document.querySelector(".btn-loading");
+      const alert = document.querySelector(".alert");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // ketika tombol submit diklik
+        // tampilkan tombol loading, hilangkan tombol kirim
+        btnLoading.classList.toggle("d-none");
+        btnKirim.classList.toggle("d-none");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            // tampilkan tombol kirim, hilangkan tombol loading
+            btnLoading.classList.toggle("d-none");
+            btnKirim.classList.toggle("d-none");
+            // tampilkan alert
+            alert.classList.toggle("d-none");
+            // reset form
+            form.reset();
+            console.log("Success!", response);
+          })
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
