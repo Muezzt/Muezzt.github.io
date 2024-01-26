@@ -14,3 +14,41 @@ svg {
 section {
   padding-top: 5rem;
 }
+
+.klik {
+  cursor: pointer;
+}
+
+.lead {
+  font-size: 10px !important;
+  margin-top: -10px;
+  margin-bottom: 30px !important;
+}
+
+.text-about {
+  font-size: 10px;
+}
+
+.card-text {
+  font-size: 15px;
+}
+
+.text-contact {
+  font-size: 13px;
+}
+
+/* responsif breakpoint */
+@media screen and (min-width: 576px) {
+  .hero {
+    width: 200px;
+  }
+  .lead {
+    font-size: 20px !important;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .display-6 {
+    font-size: 2.5rem !important;
+  }
+}
