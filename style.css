@@ -3,6 +3,9 @@
   padding: 0;
 }
 
+.navbar {
+  background-color: rgb(0, 102, 255);
+}
 .jumbotron {
   padding-top: 5rem;
   background-color: #e2edff;
@@ -42,6 +45,10 @@ section {
   font-size: 13px;
 }
 
+ul li a {
+  color: rgb(0, 0, 0) !important;
+}
+
 /* responsif breakpoint */
 @media screen and (min-width: 576px) {
   .hero {
@@ -67,5 +74,11 @@ section {
 
   .text-contact {
     font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  ul li a {
+    color: white !important;
   }
 }
